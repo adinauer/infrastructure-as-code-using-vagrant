@@ -1,0 +1,252 @@
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+[default] Box 'precise64' was not found. Fetching box from specified URL for
+the provider 'virtualbox'. Note that if the URL does not have
+a box for this provider, you should interrupt Vagrant now and add
+the box yourself. Otherwise Vagrant will attempt to download the
+full box prior to discovering this error.
+Downloading or copying the box...
+Extracting box...ate: 938k/s, Estimated time remaining: --:--:--)
+Successfully added box 'precise64' with provider 'virtualbox'!
+[default] Importing base box 'precise64'...
+[default] Matching MAC address for NAT networking...
+[default] Setting the name of the VM...
+[default] Clearing any previously set forwarded ports...
+[default] Creating shared folders metadata...
+[default] Clearing any previously set network interfaces...
+[default] Preparing network interfaces based on configuration...
+[default] Forwarding ports...
+[default] -- 22 => 2222 (adapter 1)
+[default] Booting VM...
+[default] Waiting for machine to boot. This may take a few minutes...
+[default] Machine booted and ready!
+[default] Mounting shared folders...
+[default] -- /vagrant
+
+
+
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant status
+Current machine states:
+
+default                   running (virtualbox)
+
+The VM is running. To stop this VM, you can run `vagrant halt` to
+shut it down forcefully, or you can run `vagrant suspend` to simply
+suspend the virtual machine. In either case, to restart it again,
+simply run `vagrant up`.
+
+
+
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant halt
+[default] Attempting graceful shutdown of VM...
+
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant status
+Current machine states:
+
+default                   poweroff (virtualbox)
+
+The VM is powered off. To restart the VM, simply run `vagrant up`
+
+
+
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant destroy
+Are you sure you want to destroy the 'default' VM? [y/N] y
+[default] Destroying VM and associated drives...
+
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant status
+Current machine states:
+
+default                   not created (virtualbox)
+
+The environment has not yet been created. Run `vagrant up` to
+create the environment. If a machine is not created, only the
+default provider will be shown. So if a provider is not listed,
+then the machine is not created for that environment.
+
+
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+[default] VirtualBox VM is already running.
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant status
+Current machine states:
+
+default                   running (virtualbox)
+
+The VM is running. To stop this VM, you can run `vagrant halt` to
+shut it down forcefully, or you can run `vagrant suspend` to simply
+suspend the virtual machine. In either case, to restart it again,
+simply run `vagrant up`.
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant suspend
+[default] Saving VM state and suspending execution...
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant status
+Current machine states:
+
+default                   saved (virtualbox)
+
+To resume this VM, simply run `vagrant up`.
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant resume
+[default] Resuming suspended VM...
+[default] Booting VM...
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant status
+Current machine states:
+
+default                   running (virtualbox)
+
+The VM is running. To stop this VM, you can run `vagrant halt` to
+shut it down forcefully, or you can run `vagrant suspend` to simply
+suspend the virtual machine. In either case, to restart it again,
+simply run `vagrant up`.
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant status
+Current machine states:
+
+default                   running (virtualbox)
+
+The VM is running. To stop this VM, you can run `vagrant halt` to
+shut it down forcefully, or you can run `vagrant suspend` to simply
+suspend the virtual machine. In either case, to restart it again,
+simply run `vagrant up`.
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant destroy -f
+[default] Forcing shutdown of VM...
+[default] Destroying VM and associated drives...
+
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant package --output box_with_tree.box
+[default] Attempting graceful shutdown of VM...
+[default] Clearing any previously set forwarded ports...
+[default] Creating temporary directory for export...
+[default] Exporting VM...
+[default] Compressing package to: c:/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics/box_with_tree.box
+
+
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant ssh
+Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+Welcome to your Vagrant-built virtual machine.
+Last login: Sun Jan 19 14:26:05 2014 from 10.0.2.2
+vagrant@precise64:~$
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant box add my_box box_with_tree.box
+Downloading or copying the box...
+Extracting box...ate: 1037M/s, Estimated time remaining: --:--:--)
+Successfully added box 'my_box' with provider 'virtualbox'!
+
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/03_port_forwarding (master)
+$ vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+[default] Importing base box 'precise64'...
+[default] Matching MAC address for NAT networking...
+[default] Setting the name of the VM...
+[default] Clearing any previously set forwarded ports...
+[default] Creating shared folders metadata...
+[default] Clearing any previously set network interfaces...
+[default] Preparing network interfaces based on configuration...
+[default] Forwarding ports...
+[default] -- 22 => 2222 (adapter 1)
+[default] -- 80 => 8080 (adapter 1)
+[default] Booting VM...
+[default] Waiting for machine to boot. This may take a few minutes...
+[default] Machine booted and ready!
+[default] Mounting shared folders...
+[default] -- /vagrant
+
+
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ whoami
+adws\alex
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/01_basics (master)
+$ vagrant ssh -c 'whoami'
+vagrant
+
+
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/04_synced_folder (master)
+$ vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+[default] Importing base box 'precise64'...
+[default] Matching MAC address for NAT networking...
+[default] Setting the name of the VM...
+[default] Clearing any previously set forwarded ports...
+[default] Creating shared folders metadata...
+[default] Clearing any previously set network interfaces...
+[default] Preparing network interfaces based on configuration...
+[default] Forwarding ports...
+[default] -- 22 => 2222 (adapter 1)
+[default] Booting VM...
+[default] Waiting for machine to boot. This may take a few minutes...
+[default] Machine booted and ready!
+[default] The guest additions on this VM do not match the installed version of
+VirtualBox! In most cases this is fine, but in rare cases it can
+cause things such as shared folders to not work properly. If you see
+shared folder errors, please update the guest additions within the
+virtual machine and reload your VM.
+
+Guest Additions Version: 4.2.0
+VirtualBox Version: 4.3
+[default] Mounting shared folders...
+[default] -- /vagrant
+[default] -- /srv/website
+
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/04_synced_folder (master)
+$ less src/test.txt
+this file will be synced
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/04_synced_folder (master)
+$ vagrant ssh -c 'less /srv/website/test.txt'
+this file will be synced
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/04_synced_folder (master)
+$ echo " +++new content+++" >> src/test.txt
+
+alex@ADWS /c/repos/vagrant/infrastructure-as-code-using-vagrant/boxes/04_synced_folder (master)
+$ vagrant ssh -c 'less /srv/website/test.txt'
+this file will be synced +++new content+++
